@@ -104,6 +104,20 @@ namespace Orientation_Api.DataAccess
                 return connection.Query<Order>(sqlOrder).ToList();
             }
         }
+
+        public int updatePaidOrder(int id)
+
+        {
+            var sqlOrder = @"UPDATE [dbo].[Order]
+                     SET Paid = 'true'
+                  WHERE OrderId = @id";
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                return connection.Execute(sqlOrder, new { id = id });
+            }
+        }
+        
     }
 }
 

@@ -62,10 +62,11 @@ namespace Orientation_Api.DataAccess
             using (var Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Bangazon"].ConnectionString))
             {
                 Connection.Open();
-                var ReturnValue =  Connection.ExecuteScalar<int>("update Product set Stock = ( Case Stock When 'true' Then 'false' " +
+                var ReturnValue = Connection.ExecuteScalar<int>("update Product set Stock = ( Case Stock When 'true' Then 'false' " +
                     "                           When 'false' Then 'true' End)" +
                     "                           OUTPUT inserted.Stock" +
-                    "                           Where ProductId = ProductId");
+                    "                           Where ProductId = @ProductId",
+                                                new { ProductId = ProductId });
                 return ReturnValue;
             }
         }

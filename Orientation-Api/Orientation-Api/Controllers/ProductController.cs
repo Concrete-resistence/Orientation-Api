@@ -71,11 +71,11 @@ namespace Orientation_Api.Controllers
                 var ZeroStock = productDatabase.ProductStock(Id);
                 if (ZeroStock == 0)
                 {
-                    return Request.CreateResponse(HttpStatusCode.NotFound, $"Product with the ProductId {Id} was not found");
+                    return Request.CreateResponse(HttpStatusCode.NotFound, $"Hey Sany, We are changing the message to let you know that the Product {Id} is not in stock.");
                 }
                 else 
                 {
-                    return Request.CreateResponse(HttpStatusCode.OK, $"Product with the ProductId {Id} is in Stock");
+                    return Request.CreateResponse(HttpStatusCode.OK, $"Hey Sany, We are changing the message to let you know that the Product {Id} is now in Stock");
 
                 }
             }

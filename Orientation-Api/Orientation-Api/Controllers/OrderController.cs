@@ -108,9 +108,19 @@ namespace Orientation_Api.Controllers
         }
 //------------------------------------------------------------------
         // PUT: api/Order/5
-        //[HttpPut, Route("{}")]
-        public void UpdateOrder()
+        [HttpPut, Route("Paid/{id}")]
+        public HttpResponseMessage OrderPaid(int id)
         {
+            try
+            {
+                var order = new OrderDatabase();
+                var paid = order.updatePaidOrder(id);
+                return Request.CreateResponse(HttpStatusCode.OK, $" {id}  has been updated");
+            }
+            catch
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, "Paid has not been successfully updated.");
+            }
         }
 
         // DELETE: api/Order/5

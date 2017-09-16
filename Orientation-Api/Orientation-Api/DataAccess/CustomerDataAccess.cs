@@ -41,7 +41,7 @@ namespace Orientation_Api.DataAccess
             using (var Connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Bangazon"].ConnectionString))
             {
                 Connection.Open();
-                return Connection.Execute("update Customer set Active = 'false' where CustomerId = @Id",
+                return Connection.Execute("update Customer set Active = 'true' where CustomerId = @Id",
                                                   new { Id = CustomerId });
             }
 
